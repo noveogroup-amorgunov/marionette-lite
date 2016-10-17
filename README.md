@@ -1,14 +1,16 @@
 Marionette Lite
 ======================
+[![Build Status](https://travis-ci.org/noveogroup-amorgunov/marionette-lite.svg?branch=master)](https://travis-ci.org/noveogroup-amorgunov/marionette-lite)
+
 > This project provides a prepared components for simplified work with**Backbone.Marionette**.
 
-Install
+Usage
 -----
 
 soon...
 
 
-Usage
+API
 ------
 
 soon...
@@ -24,7 +26,8 @@ Clone the repository and install the dependencies. Do not forget to install glob
 To build the project run the follow command. It will compile the project and put the result under `dist` directory. Also it will watch files changes and compile project again. 
 
     $ npm run bundle
+    $ npm run watch #run webpack with watching
 
-To test project run.
+To test project run:
 
-    $ npm run test
+    $ npm test
