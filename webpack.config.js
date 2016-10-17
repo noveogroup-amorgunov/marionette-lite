@@ -11,12 +11,12 @@ var defaults = {
     library: 'marionette-lite',
     umdNamedDefine: true
   },
-  externals: {
-    'jquery': 'jQuery',
-    'underscore': '_',
-    'backbone': 'Backbone',
-    'backbone.marionette': 'Backbone.Marionette'
-  },
+  externals: [
+    'jquery',
+    'underscore',
+    'backbone',
+    'backbone.marionette'
+  ],
   module: {
     loaders: [{
       test: path.join(__dirname, 'src'),
@@ -28,7 +28,7 @@ var defaults = {
     }]
   },
   resolve: {
-    // modulesDirectories: ['node_modules'],
+    modulesDirectories: ['node_modules'],
     root: path.resolve('./src'),
     extensions: ['', '.js'],
   },

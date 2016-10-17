@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
+		module.exports = factory(require("backbone"), require("backbone.marionette"), require("underscore"));
 	else if(typeof define === 'function' && define.amd)
-		define("marionette-lite", [], factory);
+		define("marionette-lite", ["backbone", "backbone.marionette", "underscore"], factory);
 	else if(typeof exports === 'object')
-		exports["marionette-lite"] = factory();
+		exports["marionette-lite"] = factory(require("backbone"), require("backbone.marionette"), require("underscore"));
 	else
-		root["marionette-lite"] = factory();
-})(this, function() {
+		root["marionette-lite"] = factory(root["backbone"], root["backbone.marionette"], root["underscore"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_1__, __WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_3__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -52,23 +52,35 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	// import Backbone from 'backbone';
-	// import Marionette from 'backbone.marionette';
-	// import _ from 'underscore';
+	exports.Router = undefined;
 
-	var Router = Marionette.AppRouter.extend({
+	var _backbone = __webpack_require__(1);
+
+	var _backbone2 = _interopRequireDefault(_backbone);
+
+	var _backbone3 = __webpack_require__(2);
+
+	var _backbone4 = _interopRequireDefault(_backbone3);
+
+	var _underscore = __webpack_require__(3);
+
+	var _underscore2 = _interopRequireDefault(_underscore);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Router = _backbone4.default.AppRouter.extend({
 	  before: function before(router, fragment, args, callback) {
 	    var controller = this._getController();
 	    var options = {};
 
-	    if (_.isFunction(controller.checkAccess)) {
+	    if (_underscore2.default.isFunction(controller.checkAccess)) {
 	      var requresAuth = controller.requresAuth || function () {
 	        return [];
 	      };
@@ -77,15 +89,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	      };
 
 	      if (requresAuth().indexOf(fragment) !== -1) {
-	        options = _.extend(options, { requiresAuth: true });
+	        options = _underscore2.default.extend(options, { requiresAuth: true });
 	      }
 
 	      if (preventAccessWhenAuth().indexOf(fragment) !== -1) {
-	        options = _.extend(options, { preventAccessWhenAuth: true });
+	        options = _underscore2.default.extend(options, { preventAccessWhenAuth: true });
 	      }
 	    }
 
-	    if (!_.isEmpty(options)) {
+	    if (!_underscore2.default.isEmpty(options)) {
 	      return controller.checkAccess(fragment, options, function () {
 	        return callback.call(router);
 	      });
@@ -95,10 +107,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  route: function route(_route, name, callback) {
 	    var _this = this;
 
-	    if (!_.isRegExp(_route)) {
+	    if (!_underscore2.default.isRegExp(_route)) {
 	      _route = this._routeToRegExp(_route);
 	    }
-	    if (_.isFunction(name)) {
+	    if (_underscore2.default.isFunction(name)) {
 	      callback = name;
 	      name = '';
 	    }
@@ -106,14 +118,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	      callback = this[name];
 	    }
 	    var router = this;
-	    Backbone.history.route(_route, function (fragment) {
+	    _backbone2.default.history.route(_route, function (fragment) {
 	      var args = router._extractParameters(_route, fragment);
 
 	      _this.before(router, fragment, args, function () {
 	        if (router.execute(callback, args, name) !== false) {
 	          router.trigger.apply(router, ['route: ' + name].concat(args));
 	          router.trigger('route', name, args);
-	          Backbone.history.trigger('route', router, name, args);
+	          _backbone2.default.history.trigger('route', router, name, args);
 	        }
 	      });
 	    });
@@ -123,6 +135,24 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.default = Router;
 	exports.Router = Router;
+
+/***/ },
+/* 1 */
+/***/ function(module, exports) {
+
+	module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
+
+/***/ },
+/* 2 */
+/***/ function(module, exports) {
+
+	module.exports = __WEBPACK_EXTERNAL_MODULE_2__;
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+	module.exports = __WEBPACK_EXTERNAL_MODULE_3__;
 
 /***/ }
 /******/ ])

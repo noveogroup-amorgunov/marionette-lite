@@ -2,9 +2,9 @@
 import assert from 'assert';
 import chai from 'chai';
 import sinon from 'sinon';
-import _ from 'underscore';
 
-import { Router } from '../src/main';
+// import { Router } from '../src/main';
+import { Router } from '../dist/marionette.lite.js';
 
 /* Tests */
 describe('marionette-auth/router', () => {
