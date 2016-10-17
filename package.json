@@ -1,0 +1,57 @@
+{
+  "name": "marionette-lite",
+  "version": "0.0.1",
+  "authors": [
+    "Alexander Morgunov <fxl@list.ru> (https://github.com/noveogroup-amorgunov)"
+  ],
+  "description": "Extended marionette components for simplified work",
+  "contributors": [],
+  "main": "dist/marionette.lite.js",
+  "license": "MIT",
+  "keywords": [
+    "javascript",
+    "marionette",
+    "controller",
+    "route",
+    "filter",
+    "authentication"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/noveogroup-amorgunov/marionette-lite.git"
+  },
+  "bugs": {
+    "url": "https://github.com/noveogroup-amorgunov/marionette-lite/issues"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --compilers js:babel-core/register ./test/**/*.spec.js",
+    "bundle": "./node_modules/.bin/webpack",
+    "watch": "./node_modules/.bin/webpack --watch"
+  },
+  "dependencies": {
+    "backbone": "^1.3.3",
+    "backbone.marionette": "^3.0.0",
+    "jquery": "^3.1.0",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.0",
+    "eslint": "^3.5.0",
+    "eslint-config-airbnb": "^11.1.0",
+    "eslint-config-airbnb-base": "^7.1.0",
+    "eslint-plugin-import": "^1.15.0",
+    "eslint-plugin-jsx-a11y": "^2.2.2",
+    "eslint-plugin-react": "^6.3.0",
+    "chai": "^3.5.0",
+    "lodash.clonedeep": "^4.3.2",
+    "mocha": "^3.0.2",
+    "sinon": "^1.17.6",
+    "static": "^2.0.0",
+    "watchify": "^3.7.0",
+    "webpack": "^1.13.2"
+  }
+}
