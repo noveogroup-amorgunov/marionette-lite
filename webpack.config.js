@@ -7,7 +7,9 @@ var defaults = {
   output: {
     path: path.join(__dirname, './'),
     filename: 'dist/marionette.lite.js',
-    libraryTarget: 'umd'
+    libraryTarget: 'umd',
+    library: 'marionette-lite',
+    umdNamedDefine: true
   },
   externals: {
     'jquery': 'jQuery',
@@ -26,16 +28,17 @@ var defaults = {
     }]
   },
   resolve: {
-    modulesDirectories: ['node_modules'],
+    // modulesDirectories: ['node_modules'],
+    root: path.resolve('./src'),
     extensions: ['', '.js'],
   },
   plugins: [
     // Avoid publishing files when compilation fails
     new webpack.NoErrorsPlugin(),
     new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-      'window.jQuery': 'jquery'
+      '$': 'jquery',
+      'jQuery': 'jquery',
+      'window.jQuery': 'jquery',
     })
   ],
 };
