@@ -2,7 +2,7 @@ Marionette Lite
 ======================
 > This project provides a prepared components for simplified work with**Backbone.Marionette**.
 
-Development
+Install
 -----
 
 soon...
