@@ -8,7 +8,7 @@ import { Router } from '../dist/marionette.lite.js';
 
 /* Tests */
 describe('marionette-auth/router', () => {
-    it('should be defined', () => {
-        assert.equal(true, true);
-    });
+  it('should be defined', () => {
+    assert.equal(true, true);
+  });
 });

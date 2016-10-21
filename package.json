@@ -1,6 +1,6 @@
 {
   "name": "marionette-lite",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "authors": [
     "Alexander Morgunov <fxl@list.ru> (https://github.com/noveogroup-amorgunov)"
   ],
@@ -40,13 +40,13 @@
     "babel-preset-es2015": "^6.14.0",
     "babelify": "^7.3.0",
     "browserify": "^13.1.0",
+    "chai": "^3.5.0",
     "eslint": "^3.5.0",
     "eslint-config-airbnb": "^11.1.0",
     "eslint-config-airbnb-base": "^7.1.0",
     "eslint-plugin-import": "^1.15.0",
     "eslint-plugin-jsx-a11y": "^2.2.2",
     "eslint-plugin-react": "^6.3.0",
-    "chai": "^3.5.0",
     "lodash.clonedeep": "^4.3.2",
     "mocha": "^3.0.2",
     "sinon": "^1.17.6",
