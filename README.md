@@ -127,7 +127,7 @@ const filtersMap = () => [
   new Filters.GoogleTrackPageView()
 ];
 
-const AwesomepController = Marionette.Object.extend({
+const AwesomeController = Marionette.Object.extend({
   // Add available filters map
   filtersMap,
 
@@ -140,7 +140,7 @@ const AwesomepController = Marionette.Object.extend({
     // for example, login, register, forgetpasword ...
     preventAccessWhenAuth: ['login', 'signup'],
 
-    // Can use `*` for all routers
+    // Can use `*` for all actions
     // e.g.Google analytics tracking
     googleTrackPageView: ['*']
   },
