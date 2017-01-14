@@ -28,7 +28,7 @@ Model.prototype.fetchPromise = function fetchPromise(options = {}) {
   });
 };
 
-Backbone.Model.prototype.destroyPromise = function destroyPromise(options = {}) {
+Model.prototype.destroyPromise = function destroyPromise(options = {}) {
   return new Promise((resolve, reject) => {
     const successCallback = options.success;
     const errorCallback = options.error;
@@ -52,8 +52,9 @@ Backbone.Model.prototype.destroyPromise = function destroyPromise(options = {}) 
   });
 };
 
-Backbone.Model.prototype.savePromise = function savePromise(key, val, options = {}) {
+Model.prototype.savePromise = function savePromise(key, val, options = {}) {
   // todo
 };
 
 export default Model;
+export { Model };

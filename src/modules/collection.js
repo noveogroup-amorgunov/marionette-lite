@@ -1,5 +1,5 @@
 import Backbone from 'backbone';
-import Model from './model';
+import { Model } from './model';
 
 const Collection = Backbone.Collection;
 
@@ -8,3 +8,4 @@ Collection.prototype.fetchPromise = function fetchPromise(options = {}) {
 };
 
 export default Collection;
+export { Collection };

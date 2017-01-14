@@ -6,7 +6,7 @@ import sinon from 'sinon';
 import { Router } from '../dist/marionette.lite.js';
 
 /* Tests */
-describe('marionette-auth/router', () => {
+describe('test', () => {
   it('should be defined', () => {
     assert.equal(true, true);
   });

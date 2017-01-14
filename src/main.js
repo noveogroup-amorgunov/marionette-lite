@@ -4,6 +4,7 @@ import { Router } from './router.js';
 import { View } from './view.js';
 import { Model } from './modules/model.js';
 import { Collection } from './modules/collection.js';
+import { CacheMixin } from './mixins/cache.js';
 
 const MarionetteLite = {
   Router,
@@ -11,7 +12,8 @@ const MarionetteLite = {
   View,
   Filter,
   Model,
-  Collection
+  Collection,
+  CacheMixin
 };
 
 export default MarionetteLite;
@@ -19,3 +21,6 @@ export { Router };
 export { Controller };
 export { View };
 export { Filter };
+export { Model };
+export { Collection };
+export { CacheMixin };
