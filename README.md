@@ -1,6 +1,6 @@
 Marionette Lite v0.0.4
 ======================
-[![Build Status](https://travis-ci.org/noveogroup-amorgunov/marionette-lite.svg?branch=master)](https://travis-ci.org/noveogroup-amorgunov/marionette-lite) [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](#)
+[![Build Status](https://travis-ci.org/noveogroup-amorgunov/marionette-lite.svg?branch=master)](https://travis-ci.org/noveogroup-amorgunov/marionette-lite) [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](#) [![downloads](https://img.shields.io/npm/dm/marionette-lite.svg)](https://www.npmjs.com/package/marionette-lite.js) [![version](https://img.shields.io/npm/v/marionette-lite.svg)]() [![license](https://img.shields.io/npm/l/marionette-lite.svg)]()
 
 This project provides a prepared components for simplified work with **Backbone.Marionette**. In examples used **ES5 syntax**, but you can use components with **ES3**. 
 
