@@ -2,14 +2,16 @@ Marionette Lite v0.0.4
 ======================
 [![Build Status](https://travis-ci.org/noveogroup-amorgunov/marionette-lite.svg?branch=master)](https://travis-ci.org/noveogroup-amorgunov/marionette-lite) [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](#) [![downloads](https://img.shields.io/npm/dm/marionette-lite.svg)](https://www.npmjs.com/package/marionette-lite.js) [![version](https://img.shields.io/npm/v/marionette-lite.svg)]() [![license](https://img.shields.io/npm/l/marionette-lite.svg)]()
 
-This project provides a prepared components for simplified work with **Backbone.Marionette**. In examples used **ES5 syntax**, but you can use components with **ES3**. 
+This project provides a prepared components for simplified work with **Backbone.Marionette**. In examples used **ES6 syntax**, but you can use components with **ES5** (transform for ES5 with babel).
 
 **Main features:**
 
 1. Controller with filters (before, afrer, async, for authorizate and so on) `[since v0.0.4]`
 2. Error route and add route events `[since v0.0.4]`
 3. Cached collection and model (in the localStorage or memory) `[since v0.0.5]`
-4. Container `fetch`, `destroy` methods to `fetchPromise` and `destroyPromise` `[since v0.0.6]`
+4. Container `fetch`, `destroy` methods to `fetchPromise` and `destroyPromise` `[since v0.0.5]`
+5. `@todo` Add examples of using
+6. `@todo` Add cached mixin to model and fix choose way of storage
 
 **Depndencies**: Marionette >=3
 
@@ -55,6 +57,60 @@ import { Router, Controller, /* ... */ } from 'marionette-lite';
 
 Usage
 ------
+
+###Model and Collection
+It's origin backbone Model and Collection with methods `fetchPromise` and `fetchDestroy` for wrapper origin method to promise.
+
+```javascript
+import { Collection } from 'marionette-lite';
+
+const MyCollection = Collection.extends({});
+/* ... */
+
+const collection = new MyCollection();
+collection.fetchPromise().then(() => ());
+```
+
+###Cache mixin
+
+`CacheMixin` is used to cache response of collection's fetch method using memory storage. Recommend to use for collection, which don't change over time
+Warning: `"cacheKey"` property should be defined in the collection.
+
+Example:
+```javascript
+import { Collection, Model, CacheMixin } from 'marionette-lite';
+
+const Language = Model.extend({ /* ... */ });
+const Languages = Collection.extend({
+  model: Language,
+
+  // required attribute as key at storage
+  cacheKey: 'languages',
+
+  // If "cacheFetching" is true, the collection would be fetched once time
+  // by default is false
+  cacheFetching: false
+});
+
+_.extend(Languages.prototype, CacheMixin);
+```
+
+In other module:
+
+```javascript
+import { Languages } from {{path_to_languages_collection}};
+
+const collection = new Languages();
+collection.fetchPromise(); // first time collection is fetched from server
+
+// if cacheFetching is true or fetchPromise is called with {cache: true},
+// the data is loaded from memory
+collection.fetchPromise({cache: true}); // collection isn't fetched from server
+
+// collection is fetched from server again, because cacheFetching = false
+// and cache from options is undefined
+collection.fetchPromise();
+```
 
 ###Filter
 
