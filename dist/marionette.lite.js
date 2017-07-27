@@ -241,7 +241,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    beforeFilters.map(function (filter) {
 	      var actions = controller.filters[filter.name] || [];
 	      var all = actions.length === 1 && actions[0] === '*';
-	      console.log('checkRegex', _this.checkRegex(actions, fragment));
 	      if (all || actions.indexOf(fragment) !== -1 && _underscore2.default.isFunction(filter.handler) || _this.checkRegex(actions, fragment)) {
 	        chain.push(filter);
 	      }

@@ -13,7 +13,6 @@ const Router = Marionette.AppRouter.extend({
     beforeFilters.map((filter) => {
       const actions = controller.filters[filter.name] || [];
       const all = actions.length === 1 && actions[0] === '*';
-      console.log('checkRegex', this.checkRegex(actions, fragment));
       if (all || (actions.indexOf(fragment) !== -1 && _.isFunction(filter.handler)) || this.checkRegex(actions, fragment)) {
         chain.push(filter);
       }
