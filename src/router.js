@@ -10,11 +10,11 @@ const Router = Marionette.AppRouter.extend({
     const filters = controller.filtersMap();
     const beforeFilters = filters.filter(filter => filter.execution === type);
     const chain = [];
-
     beforeFilters.map((filter) => {
       const actions = controller.filters[filter.name] || [];
       const all = actions.length === 1 && actions[0] === '*';
-      if (all || (actions.indexOf(fragment) !== -1 && _.isFunction(filter.handler))) {
+      console.log('checkRegex', this.checkRegex(actions, fragment));
+      if (all || (actions.indexOf(fragment) !== -1 && _.isFunction(filter.handler)) || this.checkRegex(actions, fragment)) {
         chain.push(filter);
       }
     });
@@ -24,7 +24,13 @@ const Router = Marionette.AppRouter.extend({
     }
     this.run(chain, router, fragment, args, callback);
   },
-
+  checkRegex(actions, fragment) {
+    return !!_.find(actions, (action) => {
+      if (action instanceof RegExp) {
+        return RegExp(action).test(fragment);
+      }
+    });
+  },
   run(chain, router, fragment, args, callback) {
     // When filters chain is finished - calling done callback
     if (!chain.length) {
