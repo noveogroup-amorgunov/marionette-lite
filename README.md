@@ -125,13 +125,13 @@ import { Filter } from 'marionette-lite';
 const RequresAuthFilter = Filter.extend({
   // name is used in controller for detect filter
   name: 'requresAuth',
-  
+
   // async mode
   async: true,
-  
+
   // by default execute before routing trigger
-  execution: Filter.Before, 
-  
+  execution: Filter.Before,
+
   // func which fired as filter
   handler(fragment, args, next) {
     // Requesting server to check if user is authorised
@@ -154,7 +154,7 @@ import { Filter } from 'marionette-lite';
 
 const GoogleTrackPageView = Filter.extend({
   name: 'googleTrackPageView',
-  execution: Filter.After, 
+  execution: Filter.After,
   handler(fragment, args) {
     /* Google analytics tracking handlers */
     return true;
@@ -163,7 +163,7 @@ const GoogleTrackPageView = Filter.extend({
 ```
 
 If you want use `async` handlers, you should calling `next` callback (third argument) when filter finished.
-If you use `sync` handler (by default), you should return `true` to continue route handling or return `false` (e.g. call `Backbone.navigate('login', true)`) 
+If you use `sync` handler (by default), you should return `true` to continue route handling or return `false` (e.g. call `Backbone.navigate('login', true)`)
 
 ####How use it in your project ?
 
@@ -188,13 +188,16 @@ const AwesomeController = Marionette.Object.extend({
   filtersMap,
 
   filters: {
-    // e.g. Action that need authentication and if user is not authenticated 
+    // e.g. Action that need authentication and if user is not authenticated
     // gets redirect to login page
     requresAuth: ['logout', 'user'],
 
     // e.g. Action that shouldn't be accessible if user is authenticated
     // for example, login, register, forgetpasword ...
     preventAccessWhenAuth: ['login', 'signup'],
+
+    // it's possible to use regex to match the route
+    fooAuth: [/(.*)\/foo$/]
 
     // Can use `*` for all actions
     // e.g.Google analytics tracking
@@ -203,11 +206,11 @@ const AwesomeController = Marionette.Object.extend({
 
   // actions
   home() { this.changeView(new HomeView()); },
-  
+
   login() { this.changeView(new LoginView()); },
-  
+
   signup() { this.changeView(new SignUpView()); },
-  
+
   user(id) {
     const user = new Models.User({ id });
     user.fetch({
@@ -232,7 +235,7 @@ Clone the repository and install the dependencies. Do not forget to install glob
     $ cd my-project
     $ npm install
 
-To build the project run the follow command. It will compile the project and put the result under `dist` directory. Also it will watch files changes and compile project again. 
+To build the project run the follow command. It will compile the project and put the result under `dist` directory. Also it will watch files changes and compile project again.
 
     $ npm run bundle
     $ npm run watch #run webpack with watching
